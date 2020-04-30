@@ -1,0 +1,64 @@
+body {
+    padding-top: 30px;
+}
+
+.glyphicon {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+}
+
+.col-sm-4{
+    border-radius: 150px;
+    width: 150px;
+}
+
+.department{
+    color: #59cdc4; 
+}
+
+.stars{
+    color: #fcb708; 
+}
+
+#wrap{
+  float: right;
+  margin:20px auto;
+  display:inline-block;
+  padding: 5px 5px;
+}
+
+#accordian .content button{
+  display:block;
+  background:#80c0ff;
+  width:130px;
+  border:0;
+  padding:5px 15px;
+  font-size:1.0em;
+  color:#FFF;
+  border-bottom:3px solid #4da7ff;
+  border-radius:5px;
+}
+
+#col-md-2 selectContaine{
+  display:block;
+  background:#80c0ff;
+  width:130px;
+  border:0;
+  padding:5px 15px;
+  font-size:1.0em;
+  color:#FFF;
+  border-bottom:3px solid #4da7ff;
+  border-radius:5px;
+}
+
+.form-control{
+    display:inline;
+    width: 15%;
+    height: 34px;
+}

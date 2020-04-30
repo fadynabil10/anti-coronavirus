@@ -1,0 +1,1 @@
+var xl8img =  document.createElement('img'); xl8img.width='1'; xl8img.alt='ExelateData'; xl8img.style='display:none'; xl8img.src='https://load77.exelator.com/pixel.gif'; xl8img.height='1'; document.body.appendChild(xl8img);

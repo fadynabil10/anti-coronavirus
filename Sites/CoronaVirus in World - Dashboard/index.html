@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CoronaVirus in World - Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- TAB CONTROLLERS -->
+<input id="panel-1-ctrl"
+       class="panel-radios" type="radio" name="tab-radios" checked>
+<input id="panel-2-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="panel-3-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">    
+<input id="panel-4-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="panel-5-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="nav-ctrl"
+       class="panel-radios" type="checkbox" name="nav-checkbox">
+
+<header id="introduction">
+  <h1>CoronaVirus in World - Dashboard</h1>
+</header>
+
+<!-- TABS LIST -->
+<ul id="tabs-list">
+    <!-- MENU TOGGLE -->
+    <label id="open-nav-label" for="nav-ctrl"></label>
+    <li id="li-for-panel-1">
+      <label class="panel-label"
+             for="panel-1-ctrl">1</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-2">
+      <label class="panel-label"
+             for="panel-2-ctrl">2</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-3">
+      <label class="panel-label"
+             for="panel-3-ctrl">3</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-4">
+      <label class="panel-label"
+             for="panel-4-ctrl">4</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-5" class="last">
+      <label class="panel-label"
+             for="panel-5-ctrl">5</label>
+    </li>    
+    <label id="close-nav-label" for="nav-ctrl">Close</label>
+</ul>
+
+<!-- THE PANELS -->
+<article id="panels">
+  <div class="container">
+    <section id="panel-1">
+      <main>
+        <h1>Worldometers Site</h1>
+        <iframe src="https://www.worldometers.info/coronavirus/?fbclid=IwAR23sUoH7OCKefZJs2rzmK2Q9ooCjRxNCL9lxecFMgGZK6EkBtjlwFLPLE8#countries" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+    <section id="panel-2">
+      <main>
+        <h1>Arcgis Site</h1>
+        <iframe src="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+    <section id="panel-3">
+      <main>
+        <h1>Arcgis Site</h1>
+        <iframe src="https://www.arcgis.com/apps/opsdashboard/index.html#/20bfbf89c8e74c0494c90b1ae0fa7b78" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+    <section id="panel-4">
+      <main>
+        <h1>CoronaVirus Site</h1>
+        <iframe src="https://coronavirus.jhu.edu/map.html?utm_medium=email&utm_source=marketing&utm_campaign=rUR7AGmDEeqd_xFKDENJkw" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>    </section>
+    <section id="panel-5">
+      <main>
+        <h1>Our World in Data Site</h1>
+        <iframe src="https://ourworldindata.org/coronavirus#confirmed-covid-19-cases-by-country" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>    </section>
+      
+      
+  </div>
+</article>
+<!-- partial -->
+  
+</body>
+</html>

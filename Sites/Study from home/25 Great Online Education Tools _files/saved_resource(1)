@@ -1,0 +1,1 @@
+var omEmbed = document.createElement('script');omEmbed.type = 'text/javascript';omEmbed.src = 'https://a.omappapi.com/app/js/api.min.js';omEmbed.setAttribute('data-account', '76574');omEmbed.setAttribute('data-user', '68094');document.getElementsByTagName('head')[0].appendChild( omEmbed );

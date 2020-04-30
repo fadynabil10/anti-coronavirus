@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Live Map (Airport-Travel Advisory Levels-Cases)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- TAB CONTROLLERS -->
+<input id="panel-1-ctrl"
+       class="panel-radios" type="radio" name="tab-radios" checked>
+<input id="panel-2-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">
+<input id="panel-3-ctrl"
+       class="panel-radios" type="radio" name="tab-radios">    
+<input id="nav-ctrl"
+       class="panel-radios" type="checkbox" name="nav-checkbox">
+
+<header id="introduction">
+  <h1>Live Map (Airport-Travel Advisory Levels-Cases)</h1>
+</header>
+
+<!-- TABS LIST -->
+<ul id="tabs-list">
+    <!-- MENU TOGGLE -->
+    <label id="open-nav-label" for="nav-ctrl"></label>
+    <li id="li-for-panel-1">
+      <label class="panel-label"
+             for="panel-1-ctrl">1</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-2">
+      <label class="panel-label"
+             for="panel-2-ctrl">2</label>
+    </li><!--INLINE-BLOCK FIX
+ --><li id="li-for-panel-3">
+      <label class="panel-label"
+             for="panel-3-ctrl">3</label>
+    </li> 
+    <label id="close-nav-label" for="nav-ctrl">Close</label>
+</ul>
+
+<!-- THE PANELS -->
+<article id="panels">
+  <div class="container">
+    <section id="panel-1">
+      <main>
+        <h1>Live Map (Airport)</h1>
+        <iframe src="https://coronavirus-resources.esri.com/datasets/5c5ea2ff0f724e4b9c20026912ea9dbe_0/geoservice?geometry=-135.242%2C-15.078%2C-141.218%2C72.671" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+    <section id="panel-2">
+      <main>
+        <h1>Live Map Travel Advisory Levels (View-Only) </h1>
+        <iframe src="https://coronavirus-resources.esri.com/datasets/85cf3abbe6ce41298b238cb661ba1ef8_0?geometry=-66.006%2C-11.181%2C111.006%2C44.838" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+    <section id="panel-3">
+      <main>
+        <h1>Live Map Coronavirus COVID-19 Cases</h1>
+        <iframe src="https://coronavirus-resources.esri.com/datasets/bbb2e4f589ba40d692fab712ae37b9ac?geometry=-168.318%2C-38.069%2C-174.294%2C63.033&layer=1" style="border:none;width:100%;;height:1400px;" allowfullscreen='true' frameborder='0'></iframe>          
+      </main>
+    </section>
+      
+      
+  </div>
+</article>
+<!-- partial -->
+  
+</body>
+</html>

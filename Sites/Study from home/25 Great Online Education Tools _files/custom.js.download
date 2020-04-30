@@ -1,0 +1,224 @@
+/**
+ * Include your custom JavaScript here.
+ *
+ * We also offer some hooks so you can plug your own logic. For instance, if you want to be notified when the variant
+ * changes on product page, you can attach a listener to the document:
+ *
+ * document.addEventListener('variant:changed', function(event) {
+ *   var variant = event.detail.variant; // Gives you access to the whole variant details
+ * });
+ *
+ * You can also add a listener whenever a product is added to the cart:
+ *
+ * document.addEventListener('product:added', function(event) {
+ *   var variant = event.detail.variant; // Get the variant that was added
+ *   var quantity = event.detail.quantity; // Get the quantity that was added
+ * });
+ */
+
+(function() {
+  var touchingCarousel = false,
+      touchStartCoords;
+
+  document.body.addEventListener('touchstart', function(e) {
+    if (e.target.closest('.flickity-slider')) {
+      touchingCarousel = true;
+    } else {
+      touchingCarousel = false;
+      return;
+    }
+
+    touchStartCoords = {
+      x: e.touches[0].pageX,
+      y: e.touches[0].pageY
+    }
+  });
+
+  document.body.addEventListener('touchmove', function(e) {
+    if (!(touchingCarousel && e.cancelable)) {
+      return;
+    }
+
+    var moveVector = {
+      x: e.touches[0].pageX - touchStartCoords.x,
+      y: e.touches[0].pageY - touchStartCoords.y
+    };
+
+    if (Math.abs(moveVector.x) > 7)
+      e.preventDefault()
+
+      }, {passive: false});
+})();
+
+
+var previousScroll = 0,
+    headerOrgOffset = $('.Header').height();
+
+$('.shopify-section--header').height($('.Header').height());
+
+var section_height = $('.wc--article').height();
+
+$(window).scroll(function () {
+  var currentScroll = $(this).scrollTop();
+  if (currentScroll > headerOrgOffset) {
+    if (currentScroll > previousScroll) {
+      $('.shopify-section--header').removeClass('sticky-header');
+      $('.wc-cart-sticky').addClass('sticky-header');
+    } else {
+      $('.shopify-section--header').addClass('sticky-header');
+      $('.wc-cart-sticky').removeClass('sticky-header');
+    }
+  } else {
+    // $('.shopify-section--header').removeClass('sticky-header');
+    $('.wc-cart-sticky').removeClass('sticky-header');
+  }
+  previousScroll = currentScroll;
+
+  var scroll = $(this).scrollTop();
+  if (scroll >= 850) {
+    $('.ArticleToolbar__ShareList').addClass('dblock');
+    $('.ArticleToolbar__ShareList').removeClass('dnone');
+    $('.product_handle').addClass('dblock');
+    $('.product_handle').removeClass('dnone');
+    $('.Article__Body').addClass('wc-height');
+  }
+  if (scroll <= 850) {
+    $('.ArticleToolbar__ShareList').removeClass('dblock');
+    $('.ArticleToolbar__ShareList').addClass('dnone');
+    $('.product_handle').removeClass('dblock');
+    $('.product_handle').addClass('dnone');
+    $('.Article__Body').removeClass('wc-height');
+  }
+
+  if (scroll >= section_height) {
+    $('.ArticleToolbar__ShareList').removeClass('dblock');
+    $('.product_handle').removeClass('dblock');
+  }
+});
+
+$('.wc-link').on('hover', function(){
+  var dataId = $(this).attr('data-id');
+  $(".wc-hover-effect").each(function(){
+    var data_menu = $(this).attr('data-id');
+    if (data_menu == dataId) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+});
+
+// Shortcircuit variable
+var triggered = false;
+function ScrollExecute() {
+  // Locate loadmore button
+  var moreButon = $('#more').last();
+  // Get URL from the loadmore button
+  var nextUrl = $(moreButon).find('a').attr("href");
+  // Button position when AJAX call should be made one time
+  if ((($(moreButon).offset().top - $(window).scrollTop()) < 800) && (triggered == false)) {
+    // Trigger shortcircuit to ensure AJAX only fires once
+    triggered = true;
+    // Make ajax call to next page for load more data
+    $.ajax({
+      url: nextUrl,
+      type: 'GET',
+      beforeSend: function() {
+        // moreButon.remove();
+      },
+      success: function(data) {
+        var page_url = $(data).find("#more a").attr('href');
+        if(typeof page_url === 'undefined'){
+          isActive = false;
+          moreButon.hide();
+        } else {
+          $('#more a').attr('href', page_url);
+        }
+      }
+    })
+    .done(function(data) {
+      // Append data
+      var result = $(data).find('.coll_pro_loop').html();
+      $('.coll_pro_loop').append(result);
+
+      // On success, reset shortcircuit
+      triggered = false
+    });
+
+  }
+}
+
+
+$(document).ready(function(){
+  
+  $('.multiple-items').slick({
+    dots: false,
+    infinite: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    speed: 300,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+  
+  $('#more a').on('click', function(e){
+    e.preventDefault();
+    $('.load_more_loader').removeClass('hide');
+    setTimeout(function(){
+      $('.load_more_loader').addClass('hide');
+    }, 800);
+    ScrollExecute();
+  });
+});
+
+$("h5").each(function(index, element){
+  var text = $(this).text().split('"—');
+  var desc_html = $(this).text();
+  var displayText = text[0].replace('"','');
+  $(this).text('');
+  var base_url = window.location.origin;
+  var sho_url = window.location.pathname;
+  var wc_shop_url = base_url + sho_url;
+  $(this).html('<a href="https://twitter.com/share?text='+displayText+'&url='+wc_shop_url+'" target="_blank">'+ desc_html +'</a>');
+});
+
+
+// Custom tab jquery
+$(document).ready(function(){
+  $('.clickme a').click(function(){
+    $('.clickme a').removeClass('activelink');
+    $(this).addClass('activelink');
+    var tagid = $(this).data('tag');
+    $('.list').removeClass('active').addClass('hide');
+    $('#'+tagid).addClass('active').removeClass('hide');
+  });
+  
+  $('.desc_reviews').click(function(){
+    $('#details_review').trigger('click');
+  });
+  
+  $('.desc_pro_more').click(function(){
+    $('#pro_details').trigger('click');
+  });
+  
+  $('.delivery_est').click(function() {
+    $('#delivery_details').trigger('click');
+  });
+  
+});
